@@ -33,7 +33,7 @@ This command will download the codes under a subfolder called `intro-algo`, whic
 2. Configure the Python interpreter by `File` -> `Settings...` -> `Project: intro-algo` -> `Python Interpreter` -> `Add` -> `Conda Environment` -> `Existing environment` -> select Anaconda environment directory of py37-smu
 
 ### Environment variable - Secret info management
-:warning: **This folder contains sensitive information! Never share or check-in**
+:warning: **This folder contains sensitive information! Never share or check-in the files**
 | The simplest way and the wrong way to handle credentials is to hardcode it in our code. |
 | --- |
  
