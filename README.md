@@ -39,7 +39,16 @@ This command will download the codes under a subfolder called `intro-algo`, whic
  
 
 A safe way to handle your secret keys/password is saving them in envirnoment variables. 
-We create a folder `c:\vault` to store secret files with sensitive information like api credentials. The key/value pairs in the file will be read as `environment variable` when Python program runs. All the secret filename will start with a dot such as `.keys`.
+We create a folder `c:\vault` to store secret files with sensitive information like api credentials. The key/value pairs in the file will be read as `environment variable` when Python program runs. All the secret filename will start with a dot such as `.keys`. In script, we can read the values as follow:
+```
+import os
+from dotenv import load_dotenv
+
+dotenv_path = 'c:/vault/.keys'
+load_dotenv(dotenv_path=dotenv_path)
+API_KEY = os.getenv('API_KEY')
+API_SECRET = os.getenv('API_SECRET')
+```
 
 
 
