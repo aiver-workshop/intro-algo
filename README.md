@@ -14,6 +14,12 @@ To see a list of Anaconda environments and the installation directory:
 conda env list
 ```
 The installation directory contains the `python.exe`, and we will need this path for configuring PyCharm later.
+Next install the following packages:
+```
+conda install -c conda-forge python-dotenv
+conda install -c anaconda requests
+conda install -c conda-forge websockets
+```
 
 ### Github - Download the code
 Install Git, then open a `Git Shell` to download this repository to your local computer by:
@@ -25,3 +31,15 @@ This command will download the codes under a subfolder called `intro-algo`, whic
 ### PyCharm - Development IDE
 1. Open the project by `File` -> `Open...` -> select `working directory`
 2. Configure the Python interpreter by `File` -> `Settings...` -> `Project: intro-algo` -> `Python Interpreter` -> `Add` -> `Conda Environment` -> `Existing environment` -> select Anaconda environment directory of py37-smu
+
+### Environment variable - Secret info management
+:warning: **This folder contains sensitive information! Never share or check-in**
+| The simplest way and the wrong way to handle credentials is to hardcode it in our code. |
+| --- |
+ 
+
+A safe way to handle your secret keys/password is saving them in envirnoment variables. 
+We create a folder `c:\vault` to store secret files with sensitive information like api credentials. The key/value pairs in the file will be read as `environment variable` when Python program runs. All the secret filename will start with a dot such as `.keys`.
+
+
+
