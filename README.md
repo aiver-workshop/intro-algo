@@ -26,10 +26,10 @@ Install Git, then open a `Git Shell` to download this repository to your local c
 ```
 git clone https://github.com/aiver-workshop/intro-algo.git
 ```
-This command will download the codes under a subfolder called `intro-algo`, which we call `working directory`.
+This command will download the codes in a folder called `intro-algo`, where you will find a `.\python` subfolder we call `python working directory`.
 
 ### PyCharm - Development IDE
-1. Open the project by `File` -> `Open...` -> select `working directory`
+1. Open the project by `File` -> `Open...` -> select `python working directory`
 2. Configure the Python interpreter by `File` -> `Settings...` -> `Project: intro-algo` -> `Python Interpreter` -> `Add` -> `Conda Environment` -> `Existing environment` -> select Anaconda environment directory of py37-smu
 
 ### Environment variable - Secret info management
