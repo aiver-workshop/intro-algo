@@ -26,7 +26,7 @@ Install Git, then open a `Git Shell` to download this repository to your local c
 ```
 git clone https://github.com/aiver-workshop/intro-algo.git
 ```
-This command will download the codes in a folder called `intro-algo`, where you will find a `.\python` subfolder we call `python working directory`.
+This command will download the codes in a folder called `intro-algo`, where you will find a `.\intro-algo\python` subfolder we call the `python working directory`.
 
 ### PyCharm - Development IDE
 1. Open the project by `File` -> `Open...` -> select `python working directory`
