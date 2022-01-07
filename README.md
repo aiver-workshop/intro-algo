@@ -9,3 +9,7 @@ Installing Anaconda, then open a `Anaconda Prompt` to create a Python 3.7 enviro
 conda create -n py37-smu python=3.7
 activate py37-smu
 ```
+To see a list of Anaconda environments and the installation directory:
+```
+conda env list
+```
