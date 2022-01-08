@@ -21,6 +21,7 @@ conda install matplotlib
 conda install -c conda-forge python-dotenv
 conda install -c anaconda requests
 conda install -c conda-forge websockets
+pip install python-gnupg
 ```
 
 ### Github - Download the code
