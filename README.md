@@ -16,6 +16,8 @@ conda env list
 The installation directory contains the `python.exe`, and we will need this path for configuring PyCharm later.
 Next install the following packages:
 ```
+conda install numpy
+conda install matplotlib
 conda install -c conda-forge python-dotenv
 conda install -c anaconda requests
 conda install -c conda-forge websockets
