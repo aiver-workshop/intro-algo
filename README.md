@@ -53,5 +53,6 @@ API_KEY = os.getenv('API_KEY')
 API_SECRET = os.getenv('API_SECRET')
 ```
 
-
+### File encryption - GnuPG
+An alternative way to protect sensitive data is to encrypt the file with a password that is only known to you. You are required to enter the password to decrypt and retrieve the credential in order to start the process. See `lib\gpg_crpto.py` for instruction on how to encrypt a file and to decrypt in Python.
 
