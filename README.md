@@ -22,6 +22,8 @@ conda install -c conda-forge python-dotenv
 conda install -c anaconda requests
 conda install -c conda-forge websockets
 pip install python-gnupg
+pip install dydx-v3-python
+pip install web3
 ```
 
 ### Github - Download the code
