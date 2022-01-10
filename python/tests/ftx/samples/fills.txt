@@ -1,0 +1,5 @@
+# spot ETH/USD
+{"channel": "fills", "type": "update", "data": {"id": 3731867132, "market": "ETH/USD", "future": null, "baseCurrency": "ETH", "quoteCurrency": "USD", "type": "order", "side": "buy", "price": 3287.6, "size": 0.001, "orderId": 78481800224, "time": "2021-09-11T12:15:40.399402+00:00", "tradeId": 1852481336, "feeRate": 0.000665, "fee": 0.002186254, "feeCurrency": "USD", "liquidity": "taker"}}
+
+# future BTC-PERP
+{"channel": "fills", "type": "update", "data": {"id": 3692005673, "market": "BTC-PERP", "future": "BTC-PERP", "baseCurrency": null, "quoteCurrency": null, "type": "order", "side": "sell", "price": 47052.0, "size": 0.0001, "orderId": 77913105521, "time": "2021-09-09T14:10:25.646508+00:00", "tradeId": 1832691741, "feeRate": 0.000665, "fee": 0.003128958, "feeCurrency": "USD", "liquidity": "taker"}}

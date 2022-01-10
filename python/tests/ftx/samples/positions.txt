@@ -1,0 +1,9 @@
+// REST - positions
+{'success': True, 'result': []}
+
+// REST - wallet
+{'success': True, 'result': [{'coin': 'ETH', 'total': 0.00099981, 'free': 0.00099981, 'availableWithoutBorrow': 0.00099981, 'usdValue': 3.6293909786081513, 'spotBorrow': 0.0}, {'coin': 'BTC', 'total': 0.00012779, 'free': 0.00012779, 'availableWithoutBorrow': 0.00012779, 'usdValue': 6.154081081476318, 'spotBorrow': 0.0}, {'coin': 'USD', 'total': 90.49253176, 'free': 90.49253176, 'availableWithoutBorrow': 90.49253176, 'usdValue': 90.4925317685, 'spotBorrow': 0.0}, {'coin': 'USDT', 'total': 0.0, 'free': 0.0, 'availableWithoutBorrow': 0.0, 'usdValue': 0.0, 'spotBorrow': 0.0}]}
+
+
+// REST - orders
+{'success': True, 'result': []}
