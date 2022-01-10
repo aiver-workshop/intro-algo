@@ -1,5 +1,5 @@
 # intro-algo
-Introduction to algorithmic trading. This project is strictly for education purpose.
+Introduction to algorithmic trading. This project is strictly for education purpose and is not financial advice.
 
 
 ### Anaconda - Setting up a Python environment
