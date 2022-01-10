@@ -37,14 +37,20 @@ This command will download the codes in a folder called `intro-algo`, where you 
 1. Open the project by `File` -> `Open...` -> select `python working directory`
 2. Configure the Python interpreter by `File` -> `Settings...` -> `Project: intro-algo` -> `Python Interpreter` -> `Add` -> `Conda Environment` -> `Existing environment` -> select Anaconda environment directory of py37-smu
 
+### PyCharm - Testing framework
+PyCharm supports multiple testing framework such as pytest and unittests. Please configure the default test runner by `File` -> `Settings...` -> `Tools` -> `Python Integrated Tools` -> `Testing` -> `Default test runner` -> `Unittests`
+
 ### Environment variable - Secret info management
-:warning: **This folder contains sensitive information! Never share or check-in the files**
 | The simplest way and the wrong way to handle credentials is to hardcode it in our code. |
 | --- |
  
 
 A safe way to handle your secret keys/password is saving them in envirnoment variables. 
-We create a folder `c:\vault` to store secret files with sensitive information like api credentials. The key/value pairs in the file will be read as `environment variable` when Python program runs. All the secret filename will start with a dot such as `.keys`. In script, we can read the values as follow:
+We create a folder `c:\vault` to store secret files with sensitive information like api credentials. The key/value pairs in the file will be read as `environment variable` when Python program runs. All the secret filename will start with a dot such as `.keys`. 
+
+:warning: **This folder contains sensitive information! Never share or check-in the files**
+
+In script, we can read the values as follow:
 ```
 import os
 from dotenv import load_dotenv
@@ -54,6 +60,7 @@ load_dotenv(dotenv_path=dotenv_path)
 API_KEY = os.getenv('API_KEY')
 API_SECRET = os.getenv('API_SECRET')
 ```
+
 
 ### File encryption - GnuPG
 An alternative way to protect sensitive data is to encrypt the file with a password that is only known to you. You are required to enter the password to decrypt and retrieve the credential in order to start the process. See `lib\gpg_crpto.py` for instruction on how to encrypt a file and to decrypt in Python.
