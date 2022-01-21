@@ -7,7 +7,7 @@ Introduction to algorithmic trading. This project is strictly for education purp
 Install Anaconda, then open a `Anaconda Prompt` to create a Python 3.7 environment by:
 ```
 conda create -n py37-smu python=3.7
-activate py37-smu
+conda activate py37-smu
 ```
 To see a list of Anaconda environments and the installation directory:
 ```
