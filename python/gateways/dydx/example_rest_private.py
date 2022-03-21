@@ -30,6 +30,10 @@ client = Client(
 stark_private_key = client.onboarding.derive_stark_key()
 client.stark_private_key = stark_private_key
 
-# Query a private endpoint.
+# Query a private endpoint - trading rewards
 reward_response = client.private.get_trading_rewards()
 print(json.dumps(reward_response.data))
+
+# Query outstanding orders
+data = client.private.get_orders()
+print(data.data)

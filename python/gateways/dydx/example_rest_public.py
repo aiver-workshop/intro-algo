@@ -8,9 +8,11 @@ public_client = Client(
     host='https://api.dydx.exchange',
 )
 
+# Query market static data
 response = public_client.public.get_markets()
-print(response.data)
+print(response.data.get('markets'))
 
+# Query order book snapshot
 response = public_client.public.get_orderbook('BTC-USD')
 print(response.data)
 
