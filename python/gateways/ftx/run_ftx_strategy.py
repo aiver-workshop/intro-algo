@@ -5,8 +5,6 @@ import logging
 import sys
 import time
 import numpy as np
-import os
-from dotenv import load_dotenv
 
 
 def get_mid(book: OrderBook) -> float:
@@ -23,12 +21,6 @@ if __name__ == '__main__':
     handler.setFormatter(logFormatter)
     root.addHandler(handler)
 
-    # read key and secret from environment variable file
-    dotenv_path = 'c:/vault/.ftx_keys'
-    load_dotenv(dotenv_path=dotenv_path)
-    API_KEY = os.getenv('API_KEY')
-    API_SECRET = os.getenv('API_SECRET')
-
     logging.info("main program starts")
 
     # charting setup
@@ -38,7 +30,7 @@ if __name__ == '__main__':
 
     # start FTX connection
     symbols = {'BTC/USD', 'BTC-PERP'}
-    ftx = FtxManager(symbol=symbols, api_key=API_KEY, api_secret=API_SECRET)
+    ftx = FtxManager(symbol=symbols)
     ftx.connect()
 
     while True:

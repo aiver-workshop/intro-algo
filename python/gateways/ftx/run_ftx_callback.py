@@ -5,10 +5,10 @@ import sys
 import time
 from lib.events import OrderEvent
 from lib.interface import OrderBook
-import os
-from dotenv import load_dotenv
 from lib.metrics import LatencyMetric
 
+
+# to keep track of market data update frequency
 book_latency = LatencyMetric()
 
 
@@ -22,6 +22,7 @@ def ftx_execution_callback(order_event: OrderEvent):
 
 async def print_latency():
     logging.info('Processing latency: %.2f ms' % book_latency.get_mean())
+
     await asyncio.sleep(1)
 
 
@@ -37,7 +38,7 @@ if __name__ == '__main__':
 
     logging.info("main program starts")
 
-    # start FTX connection and register callbacks
+    # start FTX connection and register callbacks.
     contracts = {'ETH-PERP'}
     ftx = FtxManager(symbol=contracts)
     ftx.register_depth_callback(ftx_depth_callback)

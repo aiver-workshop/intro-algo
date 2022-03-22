@@ -17,10 +17,6 @@ from typing import DefaultDict
 from operator import itemgetter
 
 
-""" Circuit break configuration """
-MAX_IOC_CANCELED_COUNT = 100
-
-
 """ Class to maintain readiness check """
 class ReadyCheck:
     def __init__(self):
@@ -31,7 +27,6 @@ class ReadyCheck:
         self.position_stream_ready = False
         self.circuit_break = False
         self.lost_heartbeat = False
-        self.wrong_ioc_count = 0
 
     def streams_ready(self) -> bool:
         """ Return a boolean to indicate streams readiness (True = all ready) or not (False = one or more not ready) """
@@ -39,7 +34,7 @@ class ReadyCheck:
 
     def not_ready(self) -> bool:
         """ Return a boolean to indicate if algo should sleep (True = should not trade) or not (True = ok to trade) """
-        return not self.streams_ready() or self.circuit_break or self.lost_heartbeat or self.wrong_ioc_count > MAX_IOC_CANCELED_COUNT
+        return not self.streams_ready() or self.circuit_break or self.lost_heartbeat
 
 
 URL_WS = 'wss://ftx.com/ws/'
