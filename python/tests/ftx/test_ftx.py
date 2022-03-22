@@ -322,10 +322,10 @@ class TestFtx(unittest.TestCase):
         orders = store.get("BTC-PERP")
         self.assertEqual(1, len(orders))
         order = orders['77921137820']
-        self.assertEqual("77921137820", order.orderID)
+        self.assertEqual("77921137820", order.order_id)
         self.assertEqual("BTC-PERP", order.symbol)
         self.assertEqual(Side.Buy, order.side)
-        self.assertEqual(0.0001, order.leavesQty)
+        self.assertEqual(0.0001, order.leaves_qty)
         self.assertEqual(30000, order.price)
         self.assertEqual("LIMIT", order.type)
 

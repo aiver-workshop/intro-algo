@@ -94,7 +94,7 @@ class TestFtx(unittest.TestCase):
         order = orders['296b2791d908f6867ce6555630d33656a284d48192dbb20fdab57db92aed9f8']
         self.assertEqual("BTC-USD", order.symbol)
         self.assertEqual(Side.Buy, order.side)
-        self.assertEqual(0.001, order.leavesQty)
+        self.assertEqual(0.001, order.leaves_qty)
         self.assertEqual(30000, order.price)
         self.assertEqual("LIMIT", order.type)
 
@@ -112,7 +112,7 @@ class TestFtx(unittest.TestCase):
         order = orders['781e2a53e00dadfb640f9bda0be120d49202b5da745aa7b6d0a3f364cd57230']
         self.assertEqual("BTC-USD", order.symbol)
         self.assertEqual(Side.Buy, order.side)
-        self.assertEqual(0.001, order.leavesQty)
+        self.assertEqual(0.001, order.leaves_qty)
         self.assertEqual(30000, order.price)
         self.assertEqual("LIMIT", order.type)
 

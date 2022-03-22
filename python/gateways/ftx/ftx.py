@@ -509,10 +509,10 @@ def process_orders(message: dict) -> dict:
         order = Order(symbol=contract_name,
                       price=price,
                       side=side,
-                      orderID=order_id,
-                      leavesQty=qty,
+                      order_id=order_id,
+                      leaves_qty=qty,
                       timestamp=timestamp,
-                      type=order_type)
+                      order_type=order_type)
 
         if contract_name not in store:
             store[contract_name] = {}
@@ -548,10 +548,10 @@ def process_orders_ws(message: dict, store: dict) -> [OrderEvent]:
             order = Order(symbol=contract_name,
                           price=price,
                           side=side,
-                          orderID=order_id,
-                          leavesQty=qty,
+                          order_id=order_id,
+                          leaves_qty=qty,
                           timestamp=timestamp,
-                          type=order_type)
+                          order_type=order_type)
 
             if contract_name not in store:
                 store[contract_name] = {}
@@ -627,8 +627,7 @@ class OrderBookProcessor:
 
         return OrderBook(timestamp=self._timestamp,
                          bids=[Tier(price=p, size=s) for (p, s) in sorted_orderbooks['bids'][:self._depth]],
-                         asks=[Tier(price=p, size=s) for (p, s) in sorted_orderbooks['asks'][:self._depth]],
-                         sorted=True)
+                         asks=[Tier(price=p, size=s) for (p, s) in sorted_orderbooks['asks'][:self._depth]])
 
     def _reset(self) -> None:
         if 'bids' in self._orderbooks:

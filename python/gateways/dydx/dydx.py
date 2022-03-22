@@ -602,8 +602,7 @@ class OrderBookProcessor:
 
         return OrderBook(timestamp=self._timestamp,
                          bids=[Tier(price=p, size=s.get_size(), quote_id=s.get_offset()) for (p, s) in sorted_orderbooks['bids'][:self._depth]],
-                         asks=[Tier(price=p, size=s.get_size(), quote_id=s.get_offset()) for (p, s) in sorted_orderbooks['asks'][:self._depth]],
-                         sorted=True)
+                         asks=[Tier(price=p, size=s.get_size(), quote_id=s.get_offset()) for (p, s) in sorted_orderbooks['asks'][:self._depth]])
 
     def _reset(self) -> None:
         if 'bids' in self._orderbooks:
@@ -654,7 +653,7 @@ def process_orders(message: dict) -> dict:
             if order.symbol not in store:
                 store[order.symbol] = {}
 
-            store[order.symbol][order.orderID] = order
+            store[order.symbol][order.order_id] = order
 
     return store
 
@@ -674,10 +673,10 @@ def parse_order(data: dict) -> Order:
     order = Order(symbol=contract_name,
                   price=price,
                   side=side,
-                  orderID=order_id,
-                  leavesQty=qty,
+                  order_id=order_id,
+                  leaves_qty=qty,
                   timestamp=timestamp,
-                  type=order_type)
+                  order_type=order_type)
 
     return order
 
@@ -700,28 +699,28 @@ def process_orders_ws(orders: dict, store: dict) -> [OrderEvent]:
             if order.symbol not in store:
                 store[order.symbol] = {}
 
-            store[order.symbol][order.orderID] = order
+            store[order.symbol][order.order_id] = order
 
-            order_events.append(OrderEvent(contract_name=order.symbol, order_id=order.orderID, status=OrderStatus.OPEN, client_id=client_id))
+            order_events.append(OrderEvent(contract_name=order.symbol, order_id=order.order_id, status=OrderStatus.OPEN, client_id=client_id))
 
         elif 'FILLED' == status:
             # remove from store
             try:
-                del store[order.symbol][order.orderID]
+                del store[order.symbol][order.order_id]
             except KeyError:
                 # ok
                 pass
-            order_events.append(OrderEvent(contract_name=order.symbol, order_id=order.orderID, status=OrderStatus.MATCHED, client_id=client_id))
+            order_events.append(OrderEvent(contract_name=order.symbol, order_id=order.order_id, status=OrderStatus.MATCHED, client_id=client_id))
 
         elif 'CANCELED' == status:
             # remove from store
             try:
-                del store[order.symbol][order.orderID]
+                del store[order.symbol][order.order_id]
             except KeyError:
                 # ok
                 pass
             cancel_reason = data.get('cancelReason')
-            order_events.append(OrderEvent(contract_name=order.symbol, order_id=order.orderID, status=OrderStatus.CANCELED, canceled_reason=cancel_reason, client_id=client_id))
+            order_events.append(OrderEvent(contract_name=order.symbol, order_id=order.order_id, status=OrderStatus.CANCELED, canceled_reason=cancel_reason, client_id=client_id))
 
     return order_events
 
