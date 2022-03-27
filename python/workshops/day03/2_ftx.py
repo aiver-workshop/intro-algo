@@ -15,6 +15,9 @@ from lib.callback_utils import assert_param_counts
 import logging
 import sys
 import time
+from collections import defaultdict
+from typing import DefaultDict
+from operator import itemgetter
 
 
 URL_WS = 'wss://ftx.com/ws/'
@@ -166,17 +169,57 @@ class FtxManager:
 
 # A helper class to process order book message
 class OrderBookProcessor:
-    # TODO
     def __init__(self, symbol: str, depth=5):
-        pass
+        self._symbol = symbol
+        self._depth = depth
 
-    # TODO
-    def handle(self, message: str):
-        pass
+        # a map that contain bids and asks sides
+        self._orderbooks: DefaultDict[str, DefaultDict[float, float]] = defaultdict(lambda: defaultdict(float))
+        self._timestamp = 0
 
-    # TODO
+    def handle(self, message: {}):
+        market = message['market']
+        if market != self._symbol:
+            raise ValueError("Received message for market {} but this processor is for {}".format(market, self._symbol))
+
+        data = message['data']
+
+        if data['action'] == 'partial':
+            self._reset()
+
+        for side in {'bids', 'asks'}:
+            book = self._orderbooks[side]
+            for price, size in data[side]:
+                if size:
+                    book[price] = size
+                else:
+                    del book[price]
+
+        self._timestamp = data['time']
+
     def get_orderbook(self) -> OrderBook:
-        pass
+        if self._timestamp == 0:
+            return 0
+
+        sorted_orderbooks = {side: sorted(
+            [(price, quantity) for price, quantity in list(self._orderbooks[side].items()) if quantity],
+            key=itemgetter(0),
+            reverse=(True if side == 'bids' else False)
+        )
+        for side in {'bids', 'asks'}}
+
+        return OrderBook(timestamp=self._timestamp,
+                         bids=[Tier(price=p, size=s) for (p, s) in sorted_orderbooks['bids'][:self._depth]],
+                         asks=[Tier(price=p, size=s) for (p, s) in sorted_orderbooks['asks'][:self._depth]])
+
+    def _reset(self) -> None:
+        if 'bids' in self._orderbooks:
+            del self._orderbooks['bids']
+
+        if 'asks' in self._orderbooks:
+            del self._orderbooks['asks']
+
+        self._timestamp = 0
 
 
 if __name__ == '__main__':

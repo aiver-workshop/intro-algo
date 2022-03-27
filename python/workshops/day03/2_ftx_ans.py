@@ -215,7 +215,7 @@ class OrderBookProcessor:
         self._orderbooks: DefaultDict[str, DefaultDict[float, float]] = defaultdict(lambda: defaultdict(float))
         self._timestamp = 0
 
-    def handle(self, message: str):
+    def handle(self, message: {}):
         market = message['market']
         if market != self._symbol:
             raise ValueError("Received message for market {} but this processor is for {}".format(market, self._symbol))
@@ -240,8 +240,7 @@ class OrderBookProcessor:
             return 0
 
         sorted_orderbooks = {side: sorted(
-            [(price, quantity) for price, quantity in list(self._orderbooks[side].items())
-             if quantity],
+            [(price, quantity) for price, quantity in list(self._orderbooks[side].items()) if quantity],
             key=itemgetter(0),
             reverse=(True if side == 'bids' else False)
         )
