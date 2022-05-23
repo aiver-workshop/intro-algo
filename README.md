@@ -17,7 +17,10 @@ conda activate py37-smu
 To see a list of Anaconda environments and the installation directory:
 ```
 conda env list
+or
+conda info --envs
 ```
+
 The installation directory contains the `python.exe`, and we will need this path for configuring PyCharm later.
 Next install the following packages:
 ```
