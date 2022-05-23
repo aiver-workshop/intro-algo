@@ -34,6 +34,10 @@ pip install dydx-v3-python
 pip install web3
 ```
 
+Please note that dydx and web3 requires C++ compiler, so download and install the community version from the official website:
+https://visualstudio.microsoft.com/downloads/
+
+
 ## Github - Download the code
 Install Git, then open a `Git Shell` to download this repository to your local computer by:
 ```
